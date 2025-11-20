@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thiệp 20/11</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(135deg, #ffe6f2, #ffd9ec, #ffeef7);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Hoa rơi */
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+.petal {
+    position: fixed;
+    top: -10vh;
+    font-size: 24px;
+    color: #ff7fbf;
+    animation: fall linear infinite;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    width: 380px;
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(255, 140, 170, 0.3);
+    text-align: center;
+    animation: fadeIn 1.2s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.title {
+    color: #ff4f8c;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.message {
+    font-size: 20px;
+    color: #a94468;
+    line-height: 1.5;
+}
+
+.main-img {
+    width: 180px;
+    border-radius: 50%;
+    margin-top: 15px;
+    box-shadow: 0 6px 20px rgba(255, 100, 150, 0.3);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s;
+}
+.main-img:hover {
+    transform: scale(1.05);
+}
+
+.flower-btn {
+    margin-top: 20px;
+    background: #ff9acb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.flower-btn:hover {
+    background: #ff6fb1;
+    transform: scale(1.05);
+}
+
+.flower-popup {
+    opacity: 0;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #ff66aa;
+    transition: 0.4s;
+}
+.flower-popup.show {
+    opacity: 1;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #b85c7e;
+}
+</style>
+</head>
+<body>
+<div class="card">
+    <h1 class="title">Chúc mừng ngày 20/11</h1>
+    <p class="message">Kính gửi Thầy/Cô, nhân ngày Nhà giáo Việt Nam 20/11, em xin chúc Thầy/Cô thật nhiều sức khỏe, niềm vui và hạnh phúc. Cảm ơn Thầy/Cô vì những bài học và sự tận tâm suốt thời gian qua.</p>
+
+    <img src="https://cdn2.fptshop.com.vn/unsafe/Meme_meo_tang_hoa_4_33eea46670.jpg" class="main-img" alt="Hình Thầy/Cô">
+
+    <button class="flower-btn" onclick="showFlower()">🌸 Bấm vào đây</button>
+
+    <div id="flowerPopup" class="flower-popup">🌼🌼🌼 Cảm ơn Thầy/Cô! 🌼🌼🌼</div>
+</div>
+
+<script>
+function showFlower() {
+    const popup = document.getElementById('flowerPopup');
+    popup.classList.add('show');
+    setTimeout(() => popup.classList.remove('show'), 2500);
+}
+
+// Tạo hoa rơi tự động
+for (let i = 0; i < 15; i++) {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.fontSize = (12 + Math.random() * 16) + 'px';
+    petal.style.animationDuration = (4 + Math.random() * 3) + 's';
+    petal.textContent = '🌸';
+    document.body.appendChild(petal);
+}
+</script>
+</body>
+</html>
